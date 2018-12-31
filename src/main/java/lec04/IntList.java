@@ -14,7 +14,20 @@ public class IntList {
      * Exercise 2.2.1: Try to write an addFirst method to the IntList class.
      */
     public void addFirst(int x) {
+        // Can not modify "this" directly so can only add the new integer to the front and move
+        // all integers towards the end of list.
+        int prevFirst = first;
+        this.first = x;
 
+        IntList curList = this;
+        int curFirst;
+        while (curList.rest != null) {
+            curList = curList.rest;
+            curFirst = curList.first;
+            curList.first = prevFirst;
+            prevFirst = curFirst;
+        }
+        curList.rest = new IntList(prevFirst, null);
     }
 
     /**
