@@ -1,3 +1,9 @@
+/*
+C-level Exercise 1.1
+Exercise 2.2.1: The curious reader might object and say that the IntList would be just as easy to
+use if we simply wrote an addFirst method. Try to write an addFirst method to the IntList class.
+You'll find that the resulting method is tricky as well as inefficient.
+ */
 package lec04;
 
 public class IntList {

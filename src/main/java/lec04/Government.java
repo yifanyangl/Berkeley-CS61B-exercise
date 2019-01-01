@@ -1,3 +1,10 @@
+/*
+C-level Exercise 1.2
+Exercise 2.2.2 Delete the word static as few times as possible so that this program compiles.
+Make sure to read the comments at the top before doing the exercise.
+
+Link: https://joshhug.gitbooks.io/hug61b/content/chap2/exercises/Government.java
+ */
 package lec04;
 
 /**
