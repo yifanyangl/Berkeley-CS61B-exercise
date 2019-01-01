@@ -135,20 +135,17 @@ public class SLList {
             return;
         }
         IntNode firstNode = sentinel.next;
-        IntNode secNode = firstNode.next;
-        while (secNode != null) {
-            if (firstNode.item == secNode.item) {
+        while (firstNode != null) {
+            if (firstNode.next == null) {
+                break;
+            }
+            if (firstNode.item == firstNode.next.item) {
                 firstNode.item *= 2;
-                firstNode.next = secNode.next;
-                secNode = secNode.next;
+                firstNode.next = firstNode.next.next;
                 size -= 1;
             }
 
-            firstNode = secNode;
-            if (firstNode == null) {
-                break;
-            }
-            secNode = secNode.next;
+            firstNode = firstNode.next;
         }
     }
 
