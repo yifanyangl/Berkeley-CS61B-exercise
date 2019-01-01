@@ -8,6 +8,14 @@ B-level Exercise 2
 Starting from the copy of SLList.java provided to you in the lecture code repository,
 implement a second constructor that takes in an array of integers,
 and creates an SLList with those integers. Again, remember to maintain your invariants.
+
+A-level Exercise 1
+Do problem 5 from midterm 1 in Kartik’s textbook
+(http://www.kartikkapur.com/documents/mt1.pdf#page=7)
+We want to add a method to IntList so that if 2 numbers in a row are the
+same, we add them together and make one large node. For example:
+1 => 1 => 2 => 3 becomes 2 => 2 => 3 which becomes 4 => 3.
+For this problem, you will not have access to any add, size, or remove method.
  */
 package lec04;
 
@@ -103,6 +111,44 @@ public class SLList {
         if (sentinel.next != null) {
             sentinel.next = sentinel.next.next;
             size -= 1;
+        }
+    }
+
+    public int[] toArray() {
+        int[] array = new int[size];
+
+        IntNode rest = sentinel.next;
+        for (int i = 0; i < size; i++) {
+            array[i] = rest.item;
+            rest = rest.next;
+        }
+        return array;
+    }
+
+    /**
+     * Adds 2 numbers in a row if they are the same.
+     *
+     * <p>Does not use any add, size, or remove method.
+     */
+    public void addAdjacent() {
+        if (size < 2) {
+            return;
+        }
+        IntNode firstNode = sentinel.next;
+        IntNode secNode = firstNode.next;
+        while (secNode != null) {
+            if (firstNode.item == secNode.item) {
+                firstNode.item *= 2;
+                firstNode.next = secNode.next;
+                secNode = secNode.next;
+                size -= 1;
+            }
+
+            firstNode = secNode;
+            if (firstNode == null) {
+                break;
+            }
+            secNode = secNode.next;
         }
     }
 
