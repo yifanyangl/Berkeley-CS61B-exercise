@@ -3,6 +3,11 @@ B-level Exercise 1
 Starting from the copy of SLList.java provided to you in the lecture code repository,
 implement the method deleteFirst, which deletes the first element in your SLList.
 Don’t forget to maintain the three invariants discussed above.
+
+B-level Exercise 2
+Starting from the copy of SLList.java provided to you in the lecture code repository,
+implement a second constructor that takes in an array of integers,
+and creates an SLList with those integers. Again, remember to maintain your invariants.
  */
 package lec04;
 
@@ -43,6 +48,14 @@ public class SLList {
         sentinel = new IntNode(63, null);
         sentinel.next = new IntNode(x, null);
         size = 1;
+    }
+
+    public SLList(int[] xArray) {
+        sentinel = new IntNode(63, null);
+        size = 0;
+        for (int x : xArray) {
+            addLast(x);
+        }
     }
 
     /**

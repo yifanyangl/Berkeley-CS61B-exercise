@@ -29,4 +29,11 @@ public class SLListTest {
         testList.deleteFirst();
         assertEquals(0, testList.size());
     }
+
+    @Test
+    public void canBeCreatedWithArray() {
+        SLList list = new SLList(new int[]{1, 2, 3});
+        assertEquals(3, list.size());
+        assertEquals(1, list.getFirst());
+    }
 }
