@@ -23,6 +23,9 @@ and filled if we call addLast 1,000 times?
 B-Level Exercise 1: We did not touch upon the method addFirst for an AList. Think of some of the
 problems you would experience in writing an addFirst method, and think of some potential solutions.
 If you think you’ve got a good one, write it out.
+
+B-Level Exercise 2:
+Maximum number of array boxes tracked by Java: 1000
  */
 package lec06;
 
