@@ -65,4 +65,28 @@ public class Discussion3ArraysTest {
         Discussion3Arrays.reverse(arr);
         assertArrayEquals(new int[]{1}, arr);
     }
+
+    @Test
+    public void replicate() {
+        int[] got = Discussion3Arrays.replicate(new int[]{3, 2, 1});
+        assertArrayEquals(new int[]{3, 3, 3, 2, 2, 1}, got);
+    }
+
+    @Test
+    public void replicateEmptyArray() {
+        int[] got = Discussion3Arrays.replicate(new int[]{});
+        assertArrayEquals(new int[]{}, got);
+    }
+
+    @Test
+    public void replicateArrayWithNonPositiveItems() {
+        int[] got = Discussion3Arrays.replicate(new int[]{0, -1, -2});
+        assertArrayEquals(new int[]{}, got);
+    }
+
+    @Test
+    public void replicateArrayWithMixedItems() {
+        int[] got = Discussion3Arrays.replicate(new int[]{3, 1, 0, 2, -1});
+        assertArrayEquals(new int[]{3, 3, 3, 1, 2, 2}, got);
+    }
 }

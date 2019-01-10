@@ -19,6 +19,10 @@ For example calling reverse on an array [1, 2, 3] should change the array to be 
 
 What is the fewest number of iteration steps you need? What is the fewest number of additional
 variables you need?
+
+2.3
+Write a non-destructive method replicate(int[] arr) that replaces the number at index i with arr[i]
+copies of itself. For example, replicate([3, 2, 1]) would return [3, 3, 3, 2, 2, 1].
  */
 package lec06;
 
@@ -46,4 +50,26 @@ public class Discussion3Arrays {
         }
     }
 
+    public static int[] replicate(int[] arr) {
+        int[] newArr = new int[arr.length];
+        int curPos = 0;
+        for (int i = 0; i < arr.length; i++) {
+            // For item <= 0, ignore it.
+            // Hence, resulting array might be shorter.
+            for (int j = 0; j < arr[i]; j++) {
+                if (curPos >= newArr.length - 1) {
+                    newArr = resizeArray(newArr, newArr.length * 2);
+                }
+                newArr[curPos] = arr[i];
+                curPos++;
+            }
+        }
+        return resizeArray(newArr, curPos);
+    }
+
+    private static int[] resizeArray(int[] arr, int size) {
+        int[] res = new int[size];
+        System.arraycopy(arr, 0, res, 0, arr.length > size ? size : arr.length);
+        return res;
+    }
 }
