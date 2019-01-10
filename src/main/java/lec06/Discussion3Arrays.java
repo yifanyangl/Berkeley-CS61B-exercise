@@ -53,17 +53,18 @@ public class Discussion3Arrays {
     public static int[] replicate(int[] arr) {
         int[] newArr = new int[arr.length];
         int curPos = 0;
-        for (int i = 0; i < arr.length; i++) {
-            // For item <= 0, ignore it.
+        for (int item : arr) {
+            // For item <= 0, does not add it to the result.
             // Hence, resulting array might be shorter.
-            for (int j = 0; j < arr[i]; j++) {
+            for (int counter = 0; counter < item; counter++) {
                 if (curPos >= newArr.length - 1) {
                     newArr = resizeArray(newArr, newArr.length * 2);
                 }
-                newArr[curPos] = arr[i];
+                newArr[curPos] = item;
                 curPos++;
             }
         }
+        // curPos == size. Removes any extra untouched items.
         return resizeArray(newArr, curPos);
     }
 
