@@ -98,22 +98,17 @@ public class SLList {
     }
 
     public void reverseRecursive() {
-        // Keep a reference to the first node to set its next to null in the end
-        // The recursion helper method can not set that to null.
-        IntNode oldFirst = sentinel.next;
-        reverseRecursiveHelper(oldFirst);
-        if (oldFirst != null) {
-            oldFirst.next = null;
-        }
+        sentinel.next = reverseRecursiveHelper(sentinel.next);
     }
 
-    private void reverseRecursiveHelper(IntNode node) {
-        if (node == null) {
-            return;
+    private IntNode reverseRecursiveHelper(IntNode node) {
+        if (node == null || node.next == null) {
+            return node;
         }
-        IntNode oldNext = node.next;
-        node.next = sentinel.next;
-        sentinel.next = node;
-        reverseRecursiveHelper(oldNext);
+        // The return value is to get the new front node of reversed list
+        IntNode reversed = reverseRecursiveHelper(node.next);
+        node.next.next = node;
+        node.next = null;
+        return reversed;
     }
 }
