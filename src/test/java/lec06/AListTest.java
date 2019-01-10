@@ -76,4 +76,26 @@ public class AListTest {
             L.addLast(L.get(i));
         }
     }
+
+    @Test
+    public void testAddFirst() {
+        AList L = new AList();
+        L.addFirst(99);
+        assertEquals(99, L.get(0));
+        L.addFirst(36);
+        assertEquals(36, L.get(0));
+        assertEquals(99, L.getLast());
+    }
+
+    @Test
+    public void testMegaInsertFirst() {
+        AList L = new AList();
+        int N = 10000;
+        for (int i = 0; i < N; i++) {
+            L.addFirst(i);
+        }
+        for (int i = 0; i < N; i++) {
+            assertEquals(N - i - 1, L.get(i));
+        }
+    }
 }

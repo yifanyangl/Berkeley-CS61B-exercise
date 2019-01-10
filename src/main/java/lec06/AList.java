@@ -19,6 +19,10 @@ reference to an array is lost?
 
 Exercise 2.5.6: Starting from an array of size 100, approximately how many memory boxes get created
 and filled if we call addLast 1,000 times?
+
+B-Level Exercise 1: We did not touch upon the method addFirst for an AList. Think of some of the
+problems you would experience in writing an addFirst method, and think of some potential solutions.
+If you think you’ve got a good one, write it out.
  */
 package lec06;
 
@@ -89,6 +93,17 @@ public class AList {
         }
         size -= 1;
         return array[size];
+    }
+
+    public void addFirst(int x) {
+        if (size == array.length) {
+            expandArray();
+        }
+        for (int i = size; i >= 1; i--) {
+            array[i] = array[i - 1];
+        }
+        array[0] = x;
+        size += 1;
     }
 
     private void expandArray() {
